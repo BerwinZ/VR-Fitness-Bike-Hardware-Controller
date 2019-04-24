@@ -3,7 +3,7 @@ import json
 import threading
 
 # Send
-VR_IP = "10.252.30.80"
+VR_IP = "10.19.133.141"
 VR_PORT = 8888
 send_sock = socket.socket(socket.AF_INET, # Internet
                     socket.SOCK_DGRAM) # UDP
@@ -14,8 +14,10 @@ def send_data(speed, angle):
     send_sock.sendto(MESSAGE, (VR_IP, VR_PORT))
 
 # Receive
-PI_IP = "10.252.30.80"
-PI_PORT = 1234
+hostname = socket.gethostname()    
+IPAddr = socket.gethostbyname(hostname) 
+PI_IP = IPAddr
+PI_PORT = 8888
 receive_sock = socket.socket(socket.AF_INET, # Internet
                     socket.SOCK_DGRAM) # UDP
 receive_sock.bind((PI_IP, PI_PORT))
@@ -26,8 +28,13 @@ def receive_data():
         msg = json.loads(data)
         print("received message:", msg)
 
+thread = threading.Thread(target=receive_data)
+
 def start_receive_data():
-    threading.Thread(target=receive_data).start()
+    thread.start()
+
+def stop_receive_data():
+    thread.join()
 
 
 if __name__ == "__main__":
@@ -39,4 +46,7 @@ if __name__ == "__main__":
             angle = input("Please input angle: ")
             send_data(speed, angle)
     except KeyboardInterrupt:
-      print ("\nCtrl-C pressed.  Stopping")
+        stop_receive_data()
+        socket.shutdown(socket.SOCK_DGRAM)
+        socket.close()
+        print ("\nCtrl-C pressed.  Stopping")
