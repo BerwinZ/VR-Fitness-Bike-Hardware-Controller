@@ -34,7 +34,7 @@ def detect_speed():
                 cnt += 1
                 pre_data = cur_data
         cycles = cnt / 40
-        rotate_speed = cycles / check_cycle
+        rotate_speed = cycles / check_cycle.total_seconds()
         speed = rotate_speed
         # speed = rotate_speed * k
 
