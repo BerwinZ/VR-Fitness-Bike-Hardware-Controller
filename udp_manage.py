@@ -3,7 +3,7 @@ import json
 import threading
 
 # Send
-VR_IP = "192.168.1.3"
+VR_IP = "10.19.3.86"
 VR_PORT = 8888
 send_sock = socket.socket(socket.AF_INET, # Internet
                     socket.SOCK_DGRAM) # UDP
@@ -16,7 +16,7 @@ def send_data(speed, angle):
 # Receive
 hostname = socket.gethostname()    
 IPAddr = socket.gethostbyname(hostname)
-PI_IP =  "192.168.1.9" 
+PI_IP =  IPAddr 
 PI_PORT = 8888
 print("Current Ip is: ", PI_IP)
 receive_sock = socket.socket(socket.AF_INET, # Internet
