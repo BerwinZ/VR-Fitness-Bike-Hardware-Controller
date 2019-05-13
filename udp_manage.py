@@ -1,10 +1,30 @@
 import socket
 import json
 import threading
+import os
 
 # Send
-VR_IP = "10.19.3.86"
+file_name = "VR_IP.txt"
+VR_IP = ""
 VR_PORT = 8888
+
+def write_file():
+    VR_IP = input("Please input new VR ip: ")
+    ip_file = open(file_name, 'w')
+    ip_file.write(VR_IP)
+    ip_file.close()
+
+if not os.path.isfile(file_name):
+    write_file()
+else:
+    ip_file = open(file_name, 'r')
+    VR_IP = ip_file.read()
+    ip_file.close()
+    print("The ip of VR is: ", VR_IP)
+    ip_correct = input("Is the ip correct? (y/n): ")
+    if 'n' in ip_correct:
+        write_file()
+
 send_sock = socket.socket(socket.AF_INET, # Internet
                     socket.SOCK_DGRAM) # UDP
 
@@ -18,7 +38,8 @@ hostname = socket.gethostname()
 IPAddr = socket.gethostbyname(hostname)
 PI_IP =  IPAddr 
 PI_PORT = 8888
-print("Current Ip is: ", PI_IP)
+print("The ip of Raspberry Pi is: ", PI_IP)
+print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 receive_sock = socket.socket(socket.AF_INET, # Internet
                     socket.SOCK_DGRAM) # UDP
 receive_sock.bind((PI_IP, PI_PORT))
