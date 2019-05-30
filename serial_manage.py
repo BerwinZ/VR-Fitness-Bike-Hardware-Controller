@@ -31,5 +31,5 @@ if __name__ == "__main__":
         while True:
             print(serial_data)
     except KeyboardInterrupt:
-        stop_read_data
+        stop_read_data()
         print ("\nCtrl-C pressed.  Stopping")
