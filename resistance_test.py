@@ -1,6 +1,6 @@
 import servo_motor_manage
 
-force_level = {0: 20, 1: 65, 2:75}
+force_level = {0: 20, 1: 77, 2:78}
 
 if __name__ == "__main__":
     try:
