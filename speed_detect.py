@@ -1,7 +1,6 @@
 import RPi.GPIO as IO
 import time
 from datetime import datetime, timedelta
-import udp_manage as udp
 import threading
 import math
 
@@ -43,9 +42,9 @@ def stop_detect_speed():
 
 if __name__ == "__main__":
     try:
-        start_detect_speed()
-        while True:
-            print(speed_KPH)
+        # start_detect_speed()
+        # while True:
+        #     print(speed_KPH)
     except KeyboardInterrupt:
         stop_detect_speed()
         print ("\nCtrl-C pressed.  Stopping")
