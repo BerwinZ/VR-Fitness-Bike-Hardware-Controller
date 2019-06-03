@@ -1,6 +1,6 @@
 int varistor_pin = A0;
 double angle = 0;
-int curr2ang_rate = 20;
+double curr2ang_rate = 20;
 
 void setup() {
   // put your setup code here, to run once:
@@ -11,8 +11,8 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int raw_data = analogRead(varistor_pin);
-  angle = (raw_data + 42 - 512)/curr2ang_rate;
+  double raw_data = analogRead(varistor_pin);
+  angle = (raw_data + 42 - 512) / curr2ang_rate;
 //  if (550 < raw_data && raw_data < 651) {
 //    angle = 0;
 //  } else if (450 < raw_data && raw_data < 551) {
