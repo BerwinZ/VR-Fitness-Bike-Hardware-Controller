@@ -2,6 +2,7 @@ import udp_manage
 import serial_manage
 import speed_detect
 import time
+import threading
 
 if __name__ == "__main__":
     try:
@@ -11,7 +12,7 @@ if __name__ == "__main__":
         while True:
             udp_manage.send_data(speed_detect.speed_KPH, serial_manage.serial_data)
             print("Speed:", speed_detect.speed_KPH, " Angle: ", serial_manage.serial_data)
-            # time.sleep(0.01)
+            time.sleep(0.1)
     except KeyboardInterrupt:
     	udp_manage.stop_receive_data()
     	serial_manage.stop_read_data()
