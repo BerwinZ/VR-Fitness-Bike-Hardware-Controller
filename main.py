@@ -16,5 +16,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
     	udp_manage.stop_receive_data()
     	serial_manage.stop_read_data()
-    	gyro_manage.stop_detect_angle()
+    	speed_detect.stop_detect_speed()
     	print ("\nCtrl-C pressed.  Stopping")
