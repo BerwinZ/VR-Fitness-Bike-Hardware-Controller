@@ -12,13 +12,12 @@ from subprocess import check_output
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
-#############!!!!!!!!!!!Input needed, path to your json credentials file!!!!!!!!!!!#############
-credentials = ServiceAccountCredentials.from_json_keyfile_name('/home/pi/VRBike/rpiLogger-7f57ed4f3faf.json', scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name('/home/pi/VRBike/rpiLogger-7f57ed4f3faf.json', scope)    # change this path to your own json credentials
 gc = gspread.authorize(credentials)
 
 ####if you are creating a new spreadsheet using code####
 # sh = gc.create("VRBike_Pi")
-# sh.share('zbw18@uw.edu', perm_type='user', role='writer')
+# sh.share('zbw18@uw.edu', perm_type='user', role='writer') # put the google account you want to share
 # worksheet = sh.sheet1
 
 ####if using a pre-existing spreadsheet or creating a new one from the web interface####

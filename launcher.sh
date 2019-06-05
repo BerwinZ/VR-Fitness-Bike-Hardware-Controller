@@ -1,1 +1,1 @@
-sudo python3 /home/pi/VRBike/py_logger.py
+sudo python3 /home/pi/VRBike/pi_logger.py
