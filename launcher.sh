@@ -1,0 +1,1 @@
+sudo python3 /home/pi/VRBike/py_logger.py

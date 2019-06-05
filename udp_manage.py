@@ -2,6 +2,7 @@ import socket
 import json
 import threading
 import os
+from subprocess import check_output
 
 # Send
 file_name = "VR_IP.txt"
@@ -34,9 +35,9 @@ def send_data(speed, angle):
     send_sock.sendto(MESSAGE, (VR_IP, VR_PORT))
 
 # Receive
-hostname = socket.gethostname()    
-IPAddr = socket.gethostbyname(hostname)
-PI_IP =  IPAddr 
+# hostname = socket.gethostname()    
+# IPAddr = socket.gethostbyname(hostname)
+PI_IP =  check_output(['hostname', '-I']).decode("utf-8") 
 PI_PORT = 8888
 print("The ip of Raspberry Pi is: ", PI_IP)
 print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
