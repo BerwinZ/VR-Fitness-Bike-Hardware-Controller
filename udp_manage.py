@@ -10,6 +10,7 @@ VR_IP = ""
 VR_PORT = 8888
 
 def write_file():
+    global VR_IP
     VR_IP = input("Please input new VR ip: ")
     ip_file = open(file_name, 'w')
     ip_file.write(VR_IP)
@@ -45,11 +46,16 @@ receive_sock = socket.socket(socket.AF_INET, # Internet
                     socket.SOCK_DGRAM) # UDP
 receive_sock.bind((PI_IP, PI_PORT))
 
+resistance_level = 1
+
 def receive_data():
+    global resistance_level
     while True:
         data, addr = receive_sock.recvfrom(1024) # buffer size is 1024 bytes
-        msg = json.loads(data)
+        msg = json.loads(str(data.decode("utf-8")))
         print("received message:", msg)
+        resistance_level = int(msg['resistanceLevel'])
+        
 
 thread = threading.Thread(target=receive_data)
 
@@ -70,6 +76,6 @@ if __name__ == "__main__":
             send_data(speed, angle)
     except KeyboardInterrupt:
         stop_receive_data()
-        socket.shutdown(socket.SOCK_DGRAM)
+        # socket.shutdown(socket.SOCK_DGRAM)
         socket.close()
         print ("\nCtrl-C pressed.  Stopping")
