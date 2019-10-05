@@ -1,6 +1,6 @@
 # VRBike-Monitor
 
-This repositoriy is used for the monitor part of project Cyclotron. Files in the top folders are files used for Raspberry Pi. Files in the Arduino folders are files used for Arduino
+This repositoriy is used for the monitor part of project Cyclotron. These scripts run in the Arduino and Raspberry Pi. They collect data from the sensor and send the data through Internet to the VR display part. The VR display part can be found [here](https://github.com/BerwinZ/VR-Fitness-Bike).
 
 ## Description
 * main.py  
