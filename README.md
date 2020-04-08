@@ -1,4 +1,4 @@
-# VRBike-Monitor
+# VR Fitness Bike - Hardware Monitor
 
 This repositoriy is used for the monitor part of project Cyclotron. These scripts run in the Arduino and Raspberry Pi. They collect data from the sensor and send the data through Internet to the VR display part. The VR display part can be found [here](https://github.com/BerwinZ/VR-Fitness-Bike).
 
